@@ -19,7 +19,6 @@ repositories { mavenCentral() }
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile project(':library')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
