@@ -1,0 +1,6 @@
+rootProject.name = 'prog-de-maluco'
+
+include 'eureka-server'
+include 'gateway-service'
+include 'abobora'
+include 'application'
