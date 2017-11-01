@@ -27,10 +27,14 @@ public class AboboraApplication {
 	    @Autowired
 	    private DiscoveryClient discoveryClient;
 
-	    @RequestMapping("/service-instances/{applicationName}")
+	    /*@RequestMapping("/service-instances/{applicationName}")
 	    public List<ServiceInstance> serviceInstancesByApplicationName(
 	            @PathVariable String applicationName) {
 	        return this.discoveryClient.getInstances(applicationName);
+	    }*/
+	    @RequestMapping("/service-instances")
+	    public String serviceInstancesByApplicationName() {
+	        return "TATATATA SEMENTE DE ABOBORA";
 	    }
 	}
 }
