@@ -1,6 +1,7 @@
-rootProject.name = 'prog-de-maluco'
+rootProject.name = 'micro-services-spring'
 
 include 'eureka-server'
 include 'gateway-service'
 include 'abobora'
+include 'abobora-consumidor'
 include 'application'
