@@ -2,6 +2,7 @@ rootProject.name = 'micro-services-spring'
 
 include 'eureka-server'
 include 'gateway-service'
+include 'authserver'
 include 'abobora'
 include 'abobora-consumidor'
 include 'application'

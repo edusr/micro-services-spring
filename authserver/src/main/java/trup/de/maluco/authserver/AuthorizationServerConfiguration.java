@@ -37,24 +37,29 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 		endpoints.authenticationManager(this.authenticationManager).accessTokenConverter(accessTokenConverter());
 	}
 
-	@Override
-	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-
-		oauthServer.tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')")
-				.checkTokenAccess("hasAuthority('ROLE_TRUSTED_CLIENT')");
-
-	}
+//	@Override
+//	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+//
+//		oauthServer.tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')")
+//				.checkTokenAccess("hasAuthority('ROLE_TRUSTED_CLIENT')");
+//	}
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+		
+	      clients.inMemory()
+          .withClient("acme")
+          .secret("acmesecret")
+          .authorizedGrantTypes("authorization_code", "refresh_token",
+              "password").scopes("openid");
 
-		clients.inMemory().withClient("normal-app").authorizedGrantTypes("authorization_code", "implicit")
+		/*clients.inMemory().withClient("normal-app").authorizedGrantTypes("authorization_code", "refresh_token")
 				.authorities("ROLE_CLIENT").scopes("read", "write").resourceIds(resourceId)
 				.accessTokenValiditySeconds(accessTokenValiditySeconds).and().withClient("trusted-app")
 				.authorizedGrantTypes("client_credentials", "password").authorities("ROLE_TRUSTED_CLIENT")
 				.scopes("read", "write").resourceIds(resourceId).accessTokenValiditySeconds(accessTokenValiditySeconds)
-				.secret("secret");
+				.secret("secret");*/
 
 	}
-
+	
 }

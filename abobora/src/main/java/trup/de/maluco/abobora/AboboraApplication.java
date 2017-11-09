@@ -1,20 +1,18 @@
 package trup.de.maluco.abobora;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableResourceServer
 public class AboboraApplication {
 
 	public static void main(String[] args) {
@@ -32,6 +30,7 @@ public class AboboraApplication {
 	            @PathVariable String applicationName) {
 	        return this.discoveryClient.getInstances(applicationName);
 	    }*/
+	    
 	    @RequestMapping("/service-instances")
 	    public String serviceInstancesByApplicationName() {
 	        return "TATATATA SEMENTE DE ABOBORA";

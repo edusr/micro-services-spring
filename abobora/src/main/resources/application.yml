@@ -1,3 +1,6 @@
+server:
+  port: 32795
+
 spring:  
   application:
     name: abobora
@@ -5,3 +8,8 @@ spring:
 ribbon:
   eureka:
     enabled: true
+    
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8080/user

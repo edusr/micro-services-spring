@@ -1,8 +1,15 @@
+spring:  
+  application:
+    name: abobora
+
 zuul:
   routes:
     users:
       path: /abobora/**
       serviceId: ABOBORA
+    auth:
+      path: /auth/**
+      serviceId: AUTHSERVER
       
 eureka:
   client:

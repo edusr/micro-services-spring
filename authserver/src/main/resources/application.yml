@@ -1,0 +1,12 @@
+spring:  
+  application:
+    name: authserver
+    
+security:
+  user:
+    password: lala
+
+ribbon:
+  eureka:
+    enabled: true
+    
