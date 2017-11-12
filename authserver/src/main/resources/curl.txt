@@ -1,7 +1,7 @@
-----curl acme:acmesecret@localhost:8080/oauth/token -d grant_type=authorization_code -d client_id=acme -d redirect_uri=http://example.com -d code=VbMxfo
+----curl acme:acmesecret@localhost:8080/oauth/token -d grant_type=authorization_code -d client_id=acme -d redirect_uri=http://example.com -d code=jC1c1k
   
   
- ------curl -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTA0OTMxNDksInVzZXJfbmFtZSI6InVzZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiLCJST0xFX0FDVFVBVE9SIl0sImp0aSI6Ijg0OTIzMGY0LTc0ZGYtNDc2MC05MDFjLTAwMjYxNzg2NjUzNSIsImNsaWVudF9pZCI6ImFjbWUiLCJzY29wZSI6WyJvcGVuaWQiXX0.es7c5PMbBHostzqqgCgiQCkQIctD726-RqUgGco5ck4kkmy7ojErK7RhebJ3UEuF0xysWVE-AjL_D8sjpFf1tuCKFZWoasN9gEm5yf2YqwgDwWsQbn1KOY6RAEuVQNc65ppnBsZ7TZdvQs4Uv-kWSbxPI46JZjgDg5VjfAInDeiT8cNSwjfqB4Sj4Mk0YOGlqLrUpgbKK8fuBaOsHo1IamUJBE_Mm_bk1bU3CqrmePCx7IkU-OtH-1Rby4TOsTxT_1G-C7e9O9zq0MHoSSNMU_MS15NuPEilne-dIRr0f2HqYK1YbaL6LnkEj7SBS5OjvyLGmk_V056xgQNBA-2h6A" http://localhost:8765/abobora/service-instances
+ ------curl -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTA1NTM2MDAsInVzZXJfbmFtZSI6InVzZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiLCJST0xFX0FDVFVBVE9SIl0sImp0aSI6ImRiNTU0M2Q4LTM5ZmMtNDFjYi04NzhmLTExMTE5YWRiMjE1ZCIsImNsaWVudF9pZCI6ImFjbWUiLCJzY29wZSI6WyJvcGVuaWQiXX0.aAO33ifHOEXBErQBa_qKmfigcT1DgfUdx0OSaXQQbKoRrRYQQNfbhyXnPoQLpfg7lL6y-JtW6vtQRlfoA0XuaxsXChz1nluk8wDXYbt-Ul5TxBm4X-C9PwFP6OSZTxkAbQ0Mdzv3ZzUEay1EmEGfl-TzPJ2Ap9DxA0jOA2DJyYg81Tasysus01zY-4yOlqz24oa3Twk9IrgP9qQL                                                                                                                IpbF9ryIRQyL-QFHo_Au62Hza5nVZMEty0_JQfokmm3pnmDbqRYgRiVIB7vk5hbPWMMOZSQYusm7P3TQ                                                                                                                Al--AehXRi_f45exHkZMqvZi9nqHnuyNlsj9wxFk10_sIxWJ34n6iQ
  
  security:
   user:

@@ -7,6 +7,8 @@ spring:
  
 
 security:
+  basic:
+    enabled: false
   user:
     password: none
   oauth2:
@@ -15,6 +17,7 @@ security:
       userAuthorizationUri: http://localhost:8080/oauth/authorize
       clientId: acme
       clientSecret: acmesecret
+      useCurrentUri: false
       
     resource:
       jwt:
@@ -28,9 +31,11 @@ zuul:
     abobora:
       path: /abobora/**
       serviceId: ABOBORA
+      sensitive-headers:
     auth:
       path: /auth/**
       serviceId: AUTHSERVER
+      sensitive-headers:
     user:
       path: /user/**
       url: http://localhost:8080/user
