@@ -12,4 +12,5 @@ ribbon:
 security:
   oauth2:
     resource:
-      userInfoUri: http://localhost:8080/user
+      jwt:
+        key-value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoQ/xuJS8TNAnofMq20kRr/0rPbA+FS7aSl+GM1KF6B7Td8CKD3EIOCWVETFtWV7h5me9b4Heo22qYK3n5Xnv2wAnkQLxvxz4DDSd+IXYrkW+v26rAgg+bm/6xJj8kDEpGbysdnQkjaPb8HYln06vgOpMSvFNzoM4qxqjTQhO5axsaR5WSLia5WC64MnDRdqCsJLY73+JyIGbGS3KayNq6Y2gBCXrkTU4rozPg5gVBGH5q//wgqYpP3ycdPldMtcYZkaWacIktUZanuhaYAQG5rnFXCGFW80t00i2f3oHcGmljXhsNHSDxPwBUgxdlOj51fB6/tcJn2uHKRJnSMrypwIDAQAB 

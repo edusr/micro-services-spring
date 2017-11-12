@@ -1,9 +1,11 @@
 package trup.de.maluco.authserver;
 
+import java.security.KeyPair;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -11,17 +13,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
-
-	@Value("${resource.id:spring-boot-application}")
-	private String resourceId;
-
-	@Value("${access_token.validity_period:10}")
-	int accessTokenValiditySeconds = 10;
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -30,36 +26,34 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	public JwtAccessTokenConverter accessTokenConverter() {
 		return new JwtAccessTokenConverter();
 	}
+	
+	@Bean
+	public JwtAccessTokenConverter jwtAccessTokenConverter() {
+		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+		KeyPair keyPair = new KeyStoreKeyFactory(
+				new ClassPathResource("keystore.jks"), "maluco".toCharArray())
+				.getKeyPair("trup.de.maluco");
+		converter.setKeyPair(keyPair);
+		return converter;
+	}
+	
+	@Override
+	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+
+		clients.inMemory().withClient("acme").secret("acmesecret")
+				.authorizedGrantTypes("authorization_code", "refresh_token", "password").scopes("openid");
+	}
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 
-		endpoints.authenticationManager(this.authenticationManager).accessTokenConverter(accessTokenConverter());
+		endpoints.authenticationManager(this.authenticationManager).accessTokenConverter(jwtAccessTokenConverter());
+		
 	}
-
-//	@Override
-//	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-//
-//		oauthServer.tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')")
-//				.checkTokenAccess("hasAuthority('ROLE_TRUSTED_CLIENT')");
-//	}
 
 	@Override
-	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		
-	      clients.inMemory()
-          .withClient("acme")
-          .secret("acmesecret")
-          .authorizedGrantTypes("authorization_code", "refresh_token",
-              "password").scopes("openid");
-
-		/*clients.inMemory().withClient("normal-app").authorizedGrantTypes("authorization_code", "refresh_token")
-				.authorities("ROLE_CLIENT").scopes("read", "write").resourceIds(resourceId)
-				.accessTokenValiditySeconds(accessTokenValiditySeconds).and().withClient("trusted-app")
-				.authorizedGrantTypes("client_credentials", "password").authorities("ROLE_TRUSTED_CLIENT")
-				.scopes("read", "write").resourceIds(resourceId).accessTokenValiditySeconds(accessTokenValiditySeconds)
-				.secret("secret");*/
-
+	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+		oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
 	}
-	
+
 }

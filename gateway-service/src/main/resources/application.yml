@@ -1,15 +1,39 @@
 spring:  
   application:
-    name: abobora
+    name: gatweway
+  aop:
+    proxy-target-class: true    
+
+ 
+
+security:
+  user:
+    password: none
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:8080/oauth/token
+      userAuthorizationUri: http://localhost:8080/oauth/authorize
+      clientId: acme
+      clientSecret: acmesecret
+      
+    resource:
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoQ/xuJS8TNAnofMq20kRr/0rPbA+FS7aSl+GM1KF6B7Td8CKD3EIOCWVETFtWV7h5me9b4Heo22qYK3n5Xnv2wAnkQLxvxz4DDSd+IXYrkW+v26rAgg+bm/6xJj8kDEpGbysdnQkjaPb8HYln06vgOpMSvFNzoM4qxqjTQhO5axsaR5WSLia5WC64MnDRdqCsJLY73+JyIGbGS3KayNq6Y2gBCXrkTU4rozPg5gVBGH5q//wgqYpP3ycdPldMtcYZkaWacIktUZanuhaYAQG5rnFXCGFW80t00i2f3oHcGmljXhsNHSDxPwBUgxdlOj51fB6/tcJn2uHKRJnSMrypwIDAQAB
+          -----END PUBLIC KEY-----
 
 zuul:
   routes:
-    users:
+    abobora:
       path: /abobora/**
       serviceId: ABOBORA
     auth:
       path: /auth/**
       serviceId: AUTHSERVER
+    user:
+      path: /user/**
+      url: http://localhost:8080/user
       
 eureka:
   client:
