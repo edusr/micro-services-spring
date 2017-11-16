@@ -43,6 +43,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 		clients.inMemory().withClient("acme").secret("acmesecret")
 				.authorizedGrantTypes("authorization_code", "refresh_token", "password").scopes("read", "write");
 	}
+	
+
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
@@ -53,7 +55,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-		oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+		oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()").allowFormAuthenticationForClients();
+		//oauthServer.allowFormAuthenticationForClients();
 	}
 
 }
