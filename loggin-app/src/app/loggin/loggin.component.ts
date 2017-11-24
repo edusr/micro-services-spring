@@ -1,3 +1,5 @@
+import { User } from './../domains/User';
+import { LogginService } from './loggin.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private logginService: LogginService) { }
 
   ngOnInit() {
+  }
+
+  submit(){
+    let user = {name: 'user' , password: 'lala'};
+    this.logginService.postar(user );
   }
 
 }

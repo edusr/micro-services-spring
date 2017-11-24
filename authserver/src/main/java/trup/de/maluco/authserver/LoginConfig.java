@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.encoding.LdapShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -33,7 +34,29 @@ public class LoginConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.parentAuthenticationManager(authenticationManager);
+		
+		/*
+		 * 
+		 * auth
+			.ldapAuthentication()
+				.userDnPatterns("uid={0},ou=people")
+				.groupSearchBase("ou=groups")
+				.contextSource()
+					.url("ldap://localhost:8389/dc=springframework,dc=org")
+					.and()
+				.passwordCompare()
+					.passwordEncoder(new LdapShaPasswordEncoder())
+					.passwordAttribute("userPassword");
+		 */
+		
+		
+		
+		auth.ldapAuthentication().userDnPatterns("sAMAccountName={0}")
+			.groupSearchBase("ou=PXTUDI,DC	")
+			.contextSource().url("ldaps://auth.peixoto.com.br:636/dc=pxtudi,dc=local")
+			.and()
+			.passwordCompare().passwordEncoder(new LdapShaPasswordEncoder())
+			.passwordAttribute("userPassword");
 
 	}
 }
