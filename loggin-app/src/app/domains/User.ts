@@ -1,4 +1,6 @@
 export class User {
-    name: number;
-    password: string;
+
+    constructor(public name: string, public password: string ) {
+
+    }
   }

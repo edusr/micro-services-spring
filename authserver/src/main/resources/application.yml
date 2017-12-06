@@ -6,7 +6,7 @@ security:
   user:
     password: lala
 
-ribbon:
-  eureka:
-    enabled: true
+#ribbon:
+#  eureka:
+#    enabled: true
     

@@ -1,7 +1,7 @@
-----curl acme:acmesecret@localhost:8080/oauth/token -d grant_type=authorization_code -d client_id=acme -d redirect_uri=http://example.com -d code=jC1c1k
+-- curl --header "Authentication: YWNtZTphY21lc2VjcmV0ZQ==" localhost:8080/oauth/token -d grant_type=password -d client_id=acme -d client_secret=acmesecret -d username=user -d password=lala
   
   
- ------curl -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTA1NTM2MDAsInVzZXJfbmFtZSI6InVzZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiLCJST0xFX0FDVFVBVE9SIl0sImp0aSI6ImRiNTU0M2Q4LTM5ZmMtNDFjYi04NzhmLTExMTE5YWRiMjE1ZCIsImNsaWVudF9pZCI6ImFjbWUiLCJzY29wZSI6WyJvcGVuaWQiXX0.aAO33ifHOEXBErQBa_qKmfigcT1DgfUdx0OSaXQQbKoRrRYQQNfbhyXnPoQLpfg7lL6y-JtW6vtQRlfoA0XuaxsXChz1nluk8wDXYbt-Ul5TxBm4X-C9PwFP6OSZTxkAbQ0Mdzv3ZzUEay1EmEGfl-TzPJ2Ap9DxA0jOA2DJyYg81Tasysus01zY-4yOlqz24oa3Twk9IrgP9qQL                                                                                                                IpbF9ryIRQyL-QFHo_Au62Hza5nVZMEty0_JQfokmm3pnmDbqRYgRiVIB7vk5hbPWMMOZSQYusm7P3TQ                                                                                                                Al--AehXRi_f45exHkZMqvZi9nqHnuyNlsj9wxFk10_sIxWJ34n6iQ
+ ------curl -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTA4MTI5MTAsInVzZXJfbmFtZSI6InVzZXIiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiLCJST0xFX0FDVFVBVE9SIl0sImp0aSI6Ijc2NzQ4ZmNiLTk1MDYtNDExOC04NjAzLWQ2MTUyZjRjYTZiYSIsImNsaWVudF9pZCI6ImFjbWUiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.CRsEryDkjTQ4v5pC-tMY-Yz4gxJSsH7pIZD7oR6exNROb8NF0YIKTRwpXS58_zaWlym-IWMcVr6ars8ViA-t8R6RVkJptDmwgNqxv4eOhzndTjOu0oCC62CtsNI1M5-LJWFYmj0QW61sxhtGrv_1BE9l8MWs2MbrRBEakR2ny5k11kEAY7Tr0u4ZpYrcmL6p6X3_8lrJ8mldiX5hlImXpKlk_iHv9xl5JHHmO4QnC6szZ_FQM5AnDEksVyUg6BzDMCQDE1JK6UDnkvAD44i45FSvfjqYA0yWiGeUxbj5VRgfKMJFHFC8yF9YJhwiUDljV1QaO5Hcvv2nd7LetIxsIw" localhost:8765/abobora/service-instances -v
  
  security:
   user:

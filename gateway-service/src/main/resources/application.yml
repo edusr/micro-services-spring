@@ -12,6 +12,8 @@ security:
   user:
     password: none
   oauth2:
+    sso:
+      login-path: /login
     client:
       accessTokenUri: http://localhost:8080/oauth/token
       userAuthorizationUri: http://localhost:8080/oauth/authorize

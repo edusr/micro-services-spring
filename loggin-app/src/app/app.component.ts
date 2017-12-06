@@ -1,3 +1,5 @@
+import { LogginService } from './loggin/loggin.service';
+import { User } from './domains/User';
 import { Component, Renderer2 } from '@angular/core';
 
 
@@ -9,7 +11,18 @@ import { Component, Renderer2 } from '@angular/core';
 export class AppComponent {
   title = 'app';
 
-  constructor(private _renderer: Renderer2) {
+
+  user = new User('', '');
+
+  constructor(private _renderer: Renderer2 , private _logginService: LogginService) {
     document.body.style.background = '#db6b01';
   }
+
+  onSubmit() {
+
+    console.log('Eu loguei o usuario' + this.user.name + ' ' + this.user.password);
+    this._logginService.postar( this.user );
+  }
+
+
 }

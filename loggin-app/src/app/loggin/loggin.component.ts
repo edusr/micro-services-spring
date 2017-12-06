@@ -1,22 +1,27 @@
 import { User } from './../domains/User';
 import { LogginService } from './loggin.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer } from '@angular/core';
 
 @Component({
-  selector: 'app-loggin',
+  selector: 'loggin',
   templateUrl: './loggin.component.html',
   styleUrls: ['./loggin.component.css']
 })
 export class LogginComponent implements OnInit {
 
-  constructor(private logginService: LogginService) { }
+
+  constructor(private logginService: LogginService, private render: Renderer) { }
 
   ngOnInit() {
   }
 
-  submit(){
-    let user = {name: 'user' , password: 'lala'};
-    this.logginService.postar(user );
+  onSubmit(){
+    console.log('Eu loguei o usuario' );
   }
+
+  lala(event){
+    
+        console.log('Eu loguei o usuario' );
+      }
 
 }
